@@ -1,0 +1,18 @@
+# Agent orchestration
+langgraph>=0.3
+# RAG
+langchain-text-splitters>=0.3
+chromadb>=0.5
+pypdf>=4.0
+# LLM providers (install the one you use)
+langchain-openai>=0.2
+langchain-google-genai>=2.0
+# Utilities
+tenacity>=8.2
+python-dotenv>=1.0
+pandas>=2.0
+reportlab>=4.0
+# UI
+streamlit>=1.35
+# Tests
+pytest>=8.0

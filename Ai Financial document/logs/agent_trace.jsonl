@@ -1,0 +1,235 @@
+{"ts": "2026-10-19T07:19:54.113+00:00", "thread": "566170c8", "turn": "d92a9fca", "event": "question", "question": "Should I buy Orion shares?"}
+{"ts": "2026-10-19T07:19:54.134+00:00", "thread": "566170c8", "turn": "d92a9fca", "agent": "context_agent", "status": "ok", "ms": 5.0, "detail": "companies=['Orion Software Inc'] year=2024 memory_used=False q='Should I buy Orion shares?'"}
+{"ts": "2026-10-19T07:19:54.146+00:00", "thread": "566170c8", "turn": "d92a9fca", "agent": "router_agent", "status": "ok", "ms": 7.5, "detail": "route=qa via rules: factual / explanatory question"}
+{"ts": "2026-10-19T07:19:54.183+00:00", "tool": "search_documents", "args": {"query": "Should I buy Orion shares?", "companies": ["Orion Software Inc"], "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T07:19:54.185+00:00", "thread": "566170c8", "turn": "d92a9fca", "agent": "retrieval_agent", "status": "ok", "ms": 34.6, "detail": "attempt 1: 0 relevant of 6 -> broadening filters"}
+{"ts": "2026-10-19T07:19:54.192+00:00", "tool": "search_documents", "args": {"query": "Should I buy Orion shares?", "companies": ["Orion Software Inc"], "fiscal_year": null}, "ok": true}
+{"ts": "2026-10-19T07:19:54.194+00:00", "thread": "566170c8", "turn": "d92a9fca", "agent": "retrieval_agent", "status": "ok", "ms": 6.3, "detail": "attempt 2: 0 relevant of 6 -> broadening filters"}
+{"ts": "2026-10-19T07:19:54.199+00:00", "tool": "search_documents", "args": {"query": "Should I buy Orion shares?", "companies": null, "fiscal_year": null}, "ok": true}
+{"ts": "2026-10-19T07:19:54.202+00:00", "thread": "566170c8", "turn": "d92a9fca", "agent": "retrieval_agent", "status": "ok", "ms": 6.0, "detail": "attempt 3: 0 relevant chunks, best distance=None, filters companies=None year=None"}
+{"ts": "2026-10-19T07:19:54.204+00:00", "thread": "566170c8", "turn": "d92a9fca", "agent": "answer_agent", "status": "ok", "ms": 0.0, "detail": "no context"}
+{"ts": "2026-10-19T07:19:54.206+00:00", "thread": "566170c8", "turn": "d92a9fca", "agent": "compose", "status": "ok", "ms": 0.0, "detail": "composed qa answer (129 chars)"}
+{"ts": "2026-10-19T07:19:54.209+00:00", "thread": "566170c8", "turn": "d92a9fca", "agent": "validation_agent", "status": "ok", "ms": 0.3, "detail": "confidence=0.30 via heuristic; review=True"}
+{"ts": "2026-10-19T07:19:54.213+00:00", "thread": "566170c8", "turn": "d92a9fca", "agent": "human_review", "status": "interrupted"}
+{"ts": "2026-10-19T07:21:46.168+00:00", "thread": "566170c8", "turn": "d92a9fca", "agent": "human_review", "status": "ok", "ms": 0.0, "detail": "human decision=reject"}
+{"ts": "2026-10-19T07:21:46.171+00:00", "thread": "566170c8", "turn": "d92a9fca", "agent": "finalize", "status": "ok", "ms": 0.0, "detail": "answer delivered and saved to memory"}
+{"ts": "2026-10-19T07:26:44.592+00:00", "thread": "0478b616", "turn": "335b539f", "event": "question", "question": "What was Nimbus Retail's revenue in FY2024?"}
+{"ts": "2026-10-19T07:26:44.597+00:00", "thread": "0478b616", "turn": "335b539f", "agent": "context_agent", "status": "ok", "ms": 0.5, "detail": "companies=['Nimbus Retail Ltd'] year=2024 memory_used=False q='What was Nimbus Retail's revenue in FY2024?'"}
+{"ts": "2026-10-19T07:26:44.602+00:00", "thread": "0478b616", "turn": "335b539f", "agent": "router_agent", "status": "ok", "ms": 0.4, "detail": "route=kpi via rules: numeric metrics requested: ['revenue']"}
+{"ts": "2026-10-19T07:26:44.616+00:00", "tool": "search_documents", "args": {"query": "What was Nimbus Retail's revenue in FY2024?", "companies": ["Nimbus Retail Ltd"], "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T07:26:44.624+00:00", "tool": "search_documents", "args": {"query": "revenue", "companies": ["Nimbus Retail Ltd"], "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T07:26:44.627+00:00", "thread": "0478b616", "turn": "335b539f", "agent": "retrieval_agent", "status": "ok", "ms": 21.0, "detail": "attempt 1: 3 relevant chunks, best distance=0.6869, filters companies=['Nimbus Retail Ltd'] year=2024"}
+{"ts": "2026-10-19T07:26:44.633+00:00", "tool": "lookup_financials", "args": {"company": "Nimbus Retail Ltd", "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T07:26:44.637+00:00", "tool": "lookup_financials", "args": {"company": "Nimbus Retail Ltd", "fiscal_year": 2023}, "ok": true}
+{"ts": "2026-10-19T07:26:44.639+00:00", "thread": "0478b616", "turn": "335b539f", "agent": "kpi_agent", "status": "ok", "ms": 10.2, "detail": "1 companies, metrics=['revenue'], ratios=[], extraction=['regex'], discrepancies=0"}
+{"ts": "2026-10-19T07:26:44.641+00:00", "thread": "0478b616", "turn": "335b539f", "agent": "compose", "status": "ok", "ms": 0.0, "detail": "composed kpi answer (221 chars)"}
+{"ts": "2026-10-19T07:26:44.644+00:00", "thread": "0478b616", "turn": "335b539f", "agent": "validation_agent", "status": "ok", "ms": 0.2, "detail": "confidence=1.00 via heuristic; review=False"}
+{"ts": "2026-10-19T07:26:44.646+00:00", "thread": "0478b616", "turn": "335b539f", "agent": "finalize", "status": "ok", "ms": 0.0, "detail": "answer delivered and saved to memory"}
+{"ts": "2026-10-19T07:27:47.860+00:00", "thread": "c5531e1a", "turn": "0c453d5d", "event": "question", "question": "And what about the previous year"}
+{"ts": "2026-10-19T07:27:47.872+00:00", "thread": "c5531e1a", "turn": "0c453d5d", "agent": "context_agent", "status": "ok", "ms": 0.8, "detail": "companies=[] year=None memory_used=False q='And what about the previous year'"}
+{"ts": "2026-10-19T07:27:47.877+00:00", "thread": "c5531e1a", "turn": "0c453d5d", "agent": "router_agent", "status": "ok", "ms": 0.6, "detail": "route=out_of_scope via rules: no financial intent detected"}
+{"ts": "2026-10-19T07:27:47.882+00:00", "thread": "c5531e1a", "turn": "0c453d5d", "agent": "out_of_scope", "status": "ok", "ms": 0.0, "detail": "polite refusal"}
+{"ts": "2026-10-19T07:27:47.887+00:00", "thread": "c5531e1a", "turn": "0c453d5d", "agent": "finalize", "status": "ok", "ms": 0.0, "detail": "answer delivered and saved to memory"}
+{"ts": "2026-10-19T07:31:15.174+00:00", "thread": "4056dc0c", "turn": "6bebed2d", "event": "question", "question": "What are the principal risks for Orion Software"}
+{"ts": "2026-10-19T07:31:15.181+00:00", "thread": "4056dc0c", "turn": "6bebed2d", "agent": "context_agent", "status": "ok", "ms": 1.0, "detail": "companies=['Orion Software Inc'] year=2024 memory_used=False q='What are the principal risks for Orion Software'"}
+{"ts": "2026-10-19T07:31:15.186+00:00", "thread": "4056dc0c", "turn": "6bebed2d", "agent": "router_agent", "status": "ok", "ms": 0.6, "detail": "route=qa via rules: factual / explanatory question"}
+{"ts": "2026-10-19T07:31:15.197+00:00", "tool": "search_documents", "args": {"query": "What are the principal risks for Orion Software", "companies": ["Orion Software Inc"], "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T07:31:15.201+00:00", "thread": "4056dc0c", "turn": "6bebed2d", "agent": "retrieval_agent", "status": "ok", "ms": 9.3, "detail": "attempt 1: 1 relevant chunks, best distance=0.7795, filters companies=['Orion Software Inc'] year=2024"}
+{"ts": "2026-10-19T07:31:15.205+00:00", "thread": "4056dc0c", "turn": "6bebed2d", "agent": "answer_agent", "status": "ok", "ms": 0.5, "detail": "answer via extractive-fallback"}
+{"ts": "2026-10-19T07:31:15.208+00:00", "thread": "4056dc0c", "turn": "6bebed2d", "agent": "compose", "status": "ok", "ms": 0.0, "detail": "composed qa answer (308 chars)"}
+{"ts": "2026-10-19T07:31:15.211+00:00", "thread": "4056dc0c", "turn": "6bebed2d", "agent": "validation_agent", "status": "ok", "ms": 0.1, "detail": "confidence=0.75 via heuristic; review=False"}
+{"ts": "2026-10-19T07:31:15.214+00:00", "thread": "4056dc0c", "turn": "6bebed2d", "agent": "finalize", "status": "ok", "ms": 0.0, "detail": "answer delivered and saved to memory"}
+{"ts": "2026-10-19T07:34:41.019+00:00", "thread": "eb5a2e5f", "turn": "2044a5ff", "event": "question", "question": "Compare net margin and debt-to-equity across all companies in FY2024"}
+{"ts": "2026-10-19T07:34:41.030+00:00", "thread": "eb5a2e5f", "turn": "2044a5ff", "agent": "context_agent", "status": "ok", "ms": 1.6, "detail": "companies=['Nimbus Retail Ltd', 'Orion Software Inc', 'Vertex Energy plc'] year=2024 memory_used=False q='Compare net margin and debt-to-equity across all companies in FY2024'"}
+{"ts": "2026-10-19T07:34:41.037+00:00", "thread": "eb5a2e5f", "turn": "2044a5ff", "agent": "router_agent", "status": "ok", "ms": 0.7, "detail": "route=kpi via rules: numeric metrics requested: ['debt_to_equity', 'net_margin']"}
+{"ts": "2026-10-19T07:34:41.052+00:00", "tool": "search_documents", "args": {"query": "Compare net margin and debt-to-equity across all companies in FY2024", "companies": ["Nimbus Retail Ltd", "Orion Software Inc", "Vertex Energy plc"], "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T07:34:41.058+00:00", "tool": "search_documents", "args": {"query": "debt to equity net margin", "companies": ["Nimbus Retail Ltd", "Orion Software Inc", "Vertex Energy plc"], "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T07:34:41.061+00:00", "thread": "eb5a2e5f", "turn": "2044a5ff", "agent": "retrieval_agent", "status": "ok", "ms": 19.9, "detail": "attempt 1: 0 relevant of 8 -> broadening filters"}
+{"ts": "2026-10-19T07:34:41.070+00:00", "tool": "search_documents", "args": {"query": "Compare net margin and debt-to-equity across all companies in FY2024", "companies": ["Nimbus Retail Ltd", "Orion Software Inc", "Vertex Energy plc"], "fiscal_year": null}, "ok": true}
+{"ts": "2026-10-19T07:34:41.077+00:00", "tool": "search_documents", "args": {"query": "debt to equity net margin", "companies": ["Nimbus Retail Ltd", "Orion Software Inc", "Vertex Energy plc"], "fiscal_year": null}, "ok": true}
+{"ts": "2026-10-19T07:34:41.079+00:00", "thread": "eb5a2e5f", "turn": "2044a5ff", "agent": "retrieval_agent", "status": "ok", "ms": 14.4, "detail": "attempt 2: 0 relevant of 9 -> broadening filters"}
+{"ts": "2026-10-19T07:34:41.086+00:00", "tool": "search_documents", "args": {"query": "Compare net margin and debt-to-equity across all companies in FY2024", "companies": null, "fiscal_year": null}, "ok": true}
+{"ts": "2026-10-19T07:34:41.091+00:00", "tool": "search_documents", "args": {"query": "debt to equity net margin", "companies": null, "fiscal_year": null}, "ok": true}
+{"ts": "2026-10-19T07:34:41.093+00:00", "thread": "eb5a2e5f", "turn": "2044a5ff", "agent": "retrieval_agent", "status": "ok", "ms": 10.6, "detail": "attempt 3: 0 relevant chunks, best distance=None, filters companies=None year=None"}
+{"ts": "2026-10-19T07:34:41.097+00:00", "tool": "lookup_financials", "args": {"company": "Nimbus Retail Ltd", "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T07:34:41.101+00:00", "tool": "lookup_financials", "args": {"company": "Nimbus Retail Ltd", "fiscal_year": 2023}, "ok": true}
+{"ts": "2026-10-19T07:34:41.104+00:00", "tool": "compute_ratio", "args": {"name": "debt_to_equity"}, "ok": true}
+{"ts": "2026-10-19T07:34:41.106+00:00", "tool": "compute_ratio", "args": {"name": "net_margin"}, "ok": true}
+{"ts": "2026-10-19T07:34:41.112+00:00", "tool": "lookup_financials", "args": {"company": "Orion Software Inc", "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T07:34:41.117+00:00", "tool": "lookup_financials", "args": {"company": "Orion Software Inc", "fiscal_year": 2023}, "ok": true}
+{"ts": "2026-10-19T07:34:41.118+00:00", "tool": "compute_ratio", "args": {"name": "debt_to_equity"}, "ok": true}
+{"ts": "2026-10-19T07:34:41.120+00:00", "tool": "compute_ratio", "args": {"name": "net_margin"}, "ok": true}
+{"ts": "2026-10-19T07:34:41.124+00:00", "tool": "lookup_financials", "args": {"company": "Vertex Energy plc", "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T07:34:41.138+00:00", "tool": "lookup_financials", "args": {"company": "Vertex Energy plc", "fiscal_year": 2023}, "ok": true}
+{"ts": "2026-10-19T07:34:41.141+00:00", "tool": "compute_ratio", "args": {"name": "debt_to_equity"}, "ok": true}
+{"ts": "2026-10-19T07:34:41.143+00:00", "tool": "compute_ratio", "args": {"name": "net_margin"}, "ok": true}
+{"ts": "2026-10-19T07:34:41.145+00:00", "thread": "eb5a2e5f", "turn": "2044a5ff", "agent": "kpi_agent", "status": "ok", "ms": 50.2, "detail": "3 companies, metrics=[], ratios=['debt_to_equity', 'net_margin'], extraction=['none'], discrepancies=0"}
+{"ts": "2026-10-19T07:34:41.147+00:00", "thread": "eb5a2e5f", "turn": "2044a5ff", "agent": "compose", "status": "ok", "ms": 0.0, "detail": "composed kpi answer (499 chars)"}
+{"ts": "2026-10-19T07:34:41.149+00:00", "thread": "eb5a2e5f", "turn": "2044a5ff", "agent": "validation_agent", "status": "ok", "ms": 0.1, "detail": "confidence=1.00 via heuristic; review=False"}
+{"ts": "2026-10-19T07:34:41.151+00:00", "thread": "eb5a2e5f", "turn": "2044a5ff", "agent": "finalize", "status": "ok", "ms": 0.0, "detail": "answer delivered and saved to memory"}
+{"ts": "2026-10-19T07:38:08.443+00:00", "thread": "587672a0", "turn": "91df3b51", "event": "question", "question": "Give me a full analysis of Vertex Energy FY2024"}
+{"ts": "2026-10-19T07:38:08.453+00:00", "thread": "587672a0", "turn": "91df3b51", "agent": "context_agent", "status": "ok", "ms": 0.6, "detail": "companies=['Vertex Energy plc'] year=2024 memory_used=False q='Give me a full analysis of Vertex Energy FY2024'"}
+{"ts": "2026-10-19T07:38:08.460+00:00", "thread": "587672a0", "turn": "91df3b51", "agent": "router_agent", "status": "ok", "ms": 0.9, "detail": "route=full_analysis via rules: asks for narrative + metrics"}
+{"ts": "2026-10-19T07:38:08.475+00:00", "tool": "search_documents", "args": {"query": "Give me a full analysis of Vertex Energy FY2024", "companies": ["Vertex Energy plc"], "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T07:38:08.484+00:00", "tool": "search_documents", "args": {"query": "revenue net income financial performance", "companies": ["Vertex Energy plc"], "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T07:38:08.489+00:00", "tool": "search_documents", "args": {"query": "principal risks and uncertainties", "companies": ["Vertex Energy plc"], "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T07:38:08.494+00:00", "tool": "search_documents", "args": {"query": "outlook guidance strategy", "companies": ["Vertex Energy plc"], "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T07:38:08.500+00:00", "tool": "search_documents", "args": {"query": "cash flow liquidity balance sheet", "companies": ["Vertex Energy plc"], "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T07:38:08.502+00:00", "thread": "587672a0", "turn": "91df3b51", "agent": "retrieval_agent", "status": "ok", "ms": 34.5, "detail": "attempt 1: 1 relevant chunks, best distance=0.8001, filters companies=['Vertex Energy plc'] year=2024"}
+{"ts": "2026-10-19T07:38:08.507+00:00", "thread": "587672a0", "turn": "91df3b51", "agent": "summary_agent", "status": "ok", "ms": 0.5, "detail": "summary via extractive-fallback, 1 chunks"}
+{"ts": "2026-10-19T07:38:08.509+00:00", "tool": "lookup_financials", "args": {"company": "Vertex Energy plc", "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T07:38:08.514+00:00", "tool": "lookup_financials", "args": {"company": "Vertex Energy plc", "fiscal_year": 2023}, "ok": true}
+{"ts": "2026-10-19T07:38:08.518+00:00", "tool": "compute_ratio", "args": {"name": "gross_margin"}, "ok": true}
+{"ts": "2026-10-19T07:38:08.520+00:00", "tool": "compute_ratio", "args": {"name": "net_margin"}, "ok": true}
+{"ts": "2026-10-19T07:38:08.522+00:00", "tool": "compute_ratio", "args": {"name": "current_ratio"}, "ok": true}
+{"ts": "2026-10-19T07:38:08.524+00:00", "tool": "compute_ratio", "args": {"name": "debt_to_equity"}, "ok": true}
+{"ts": "2026-10-19T07:38:08.525+00:00", "tool": "compute_ratio", "args": {"name": "roe"}, "ok": true}
+{"ts": "2026-10-19T07:38:08.527+00:00", "tool": "compute_ratio", "args": {"name": "revenue_growth"}, "ok": true}
+{"ts": "2026-10-19T07:38:08.529+00:00", "thread": "587672a0", "turn": "91df3b51", "agent": "kpi_agent", "status": "ok", "ms": 23.4, "detail": "1 companies, metrics=['revenue', 'gross_profit', 'ebitda', 'net_income', 'total_assets', 'total_liabilities', 'shareholders_equity', 'free_cash_flow', 'eps'], ratios=['gross_margin', 'net_margin', 'current_ratio', 'debt_to_equity', 'roe', 'revenue_growth'], extraction=['regex'], discrepancies=0"}
+{"ts": "2026-10-19T07:38:08.534+00:00", "thread": "587672a0", "turn": "91df3b51", "agent": "compose", "status": "ok", "ms": 0.0, "detail": "composed full_analysis answer (1392 chars)"}
+{"ts": "2026-10-19T07:38:08.537+00:00", "thread": "587672a0", "turn": "91df3b51", "agent": "validation_agent", "status": "ok", "ms": 0.3, "detail": "confidence=1.00 via heuristic; review=True"}
+{"ts": "2026-10-19T07:38:08.540+00:00", "thread": "587672a0", "turn": "91df3b51", "agent": "human_review", "status": "interrupted"}
+{"ts": "2026-10-19T07:38:44.197+00:00", "thread": "587672a0", "turn": "91df3b51", "agent": "human_review", "status": "ok", "ms": 0.0, "detail": "human decision=approve"}
+{"ts": "2026-10-19T07:38:44.203+00:00", "thread": "587672a0", "turn": "91df3b51", "agent": "finalize", "status": "ok", "ms": 0.1, "detail": "answer delivered and saved to memory"}
+{"ts": "2026-10-19T07:48:07.151+00:00", "thread": "5cbe8f64", "turn": "527ebf6f", "event": "question", "question": "What are the principal risks for Nimbus"}
+{"ts": "2026-10-19T07:48:07.169+00:00", "thread": "5cbe8f64", "turn": "527ebf6f", "agent": "context_agent", "status": "ok", "ms": 1.6, "detail": "companies=['Nimbus Retail Ltd'] year=2024 memory_used=False q='What are the principal risks for Nimbus'"}
+{"ts": "2026-10-19T07:48:07.178+00:00", "thread": "5cbe8f64", "turn": "527ebf6f", "agent": "router_agent", "status": "ok", "ms": 0.7, "detail": "route=qa via rules: factual / explanatory question"}
+{"ts": "2026-10-19T07:48:07.196+00:00", "tool": "search_documents", "args": {"query": "What are the principal risks for Nimbus", "companies": ["Nimbus Retail Ltd"], "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T07:48:07.200+00:00", "thread": "5cbe8f64", "turn": "527ebf6f", "agent": "retrieval_agent", "status": "ok", "ms": 13.6, "detail": "attempt 1: 1 relevant chunks, best distance=0.8534, filters companies=['Nimbus Retail Ltd'] year=2024"}
+{"ts": "2026-10-19T07:48:07.206+00:00", "thread": "5cbe8f64", "turn": "527ebf6f", "agent": "answer_agent", "status": "ok", "ms": 0.4, "detail": "answer via extractive-fallback"}
+{"ts": "2026-10-19T07:48:07.211+00:00", "thread": "5cbe8f64", "turn": "527ebf6f", "agent": "compose", "status": "ok", "ms": 0.0, "detail": "composed qa answer (229 chars)"}
+{"ts": "2026-10-19T07:48:07.219+00:00", "thread": "5cbe8f64", "turn": "527ebf6f", "agent": "validation_agent", "status": "ok", "ms": 0.2, "detail": "confidence=0.75 via heuristic; review=False"}
+{"ts": "2026-10-19T07:48:07.227+00:00", "thread": "5cbe8f64", "turn": "527ebf6f", "agent": "finalize", "status": "ok", "ms": 0.0, "detail": "answer delivered and saved to memory"}
+{"ts": "2026-10-19T07:49:42.916+00:00", "thread": "e25d5cbb", "turn": "f81e9f4e", "event": "question", "question": "Consolidated Income Statement for Nimbus"}
+{"ts": "2026-10-19T07:49:42.933+00:00", "thread": "e25d5cbb", "turn": "f81e9f4e", "agent": "context_agent", "status": "ok", "ms": 1.3, "detail": "companies=['Nimbus Retail Ltd'] year=2024 memory_used=False q='Consolidated Income Statement for Nimbus'"}
+{"ts": "2026-10-19T07:49:42.940+00:00", "thread": "e25d5cbb", "turn": "f81e9f4e", "agent": "router_agent", "status": "ok", "ms": 1.2, "detail": "route=qa via rules: factual / explanatory question"}
+{"ts": "2026-10-19T07:49:42.960+00:00", "tool": "search_documents", "args": {"query": "Consolidated Income Statement for Nimbus", "companies": ["Nimbus Retail Ltd"], "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T07:49:42.965+00:00", "thread": "e25d5cbb", "turn": "f81e9f4e", "agent": "retrieval_agent", "status": "ok", "ms": 16.4, "detail": "attempt 1: 2 relevant chunks, best distance=0.7255, filters companies=['Nimbus Retail Ltd'] year=2024"}
+{"ts": "2026-10-19T07:49:42.973+00:00", "thread": "e25d5cbb", "turn": "f81e9f4e", "agent": "answer_agent", "status": "ok", "ms": 0.4, "detail": "answer via extractive-fallback"}
+{"ts": "2026-10-19T07:49:42.980+00:00", "thread": "e25d5cbb", "turn": "f81e9f4e", "agent": "compose", "status": "ok", "ms": 0.0, "detail": "composed qa answer (105 chars)"}
+{"ts": "2026-10-19T07:49:42.987+00:00", "thread": "e25d5cbb", "turn": "f81e9f4e", "agent": "validation_agent", "status": "ok", "ms": 0.4, "detail": "confidence=0.75 via heuristic; review=False"}
+{"ts": "2026-10-19T07:49:42.997+00:00", "thread": "e25d5cbb", "turn": "f81e9f4e", "agent": "finalize", "status": "ok", "ms": 0.0, "detail": "answer delivered and saved to memory"}
+{"ts": "2026-10-19T07:50:50.874+00:00", "thread": "e25d5cbb", "turn": "d8c40bfc", "event": "question", "question": "Consolidated Income Statement for Nimbus for Revenue FY2025"}
+{"ts": "2026-10-19T07:50:50.889+00:00", "thread": "e25d5cbb", "turn": "d8c40bfc", "agent": "context_agent", "status": "ok", "ms": 2.4, "detail": "companies=['Nimbus Retail Ltd'] year=2025 memory_used=False q='Consolidated Income Statement for Nimbus for Revenue FY2025'"}
+{"ts": "2026-10-19T07:50:50.898+00:00", "thread": "e25d5cbb", "turn": "d8c40bfc", "agent": "router_agent", "status": "ok", "ms": 0.7, "detail": "route=kpi via rules: numeric metrics requested: ['revenue']"}
+{"ts": "2026-10-19T07:50:50.947+00:00", "tool": "search_documents", "args": {"query": "Consolidated Income Statement for Nimbus for Revenue FY2025", "companies": ["Nimbus Retail Ltd"], "fiscal_year": 2025}, "ok": true}
+{"ts": "2026-10-19T07:50:50.956+00:00", "tool": "search_documents", "args": {"query": "revenue", "companies": ["Nimbus Retail Ltd"], "fiscal_year": 2025}, "ok": true}
+{"ts": "2026-10-19T07:50:50.962+00:00", "thread": "e25d5cbb", "turn": "d8c40bfc", "agent": "retrieval_agent", "status": "ok", "ms": 58.6, "detail": "attempt 1: 0 relevant of 0 -> broadening filters"}
+{"ts": "2026-10-19T07:50:50.982+00:00", "tool": "search_documents", "args": {"query": "Consolidated Income Statement for Nimbus for Revenue FY2025", "companies": ["Nimbus Retail Ltd"], "fiscal_year": null}, "ok": true}
+{"ts": "2026-10-19T07:50:50.995+00:00", "tool": "search_documents", "args": {"query": "revenue", "companies": ["Nimbus Retail Ltd"], "fiscal_year": null}, "ok": true}
+{"ts": "2026-10-19T07:50:51.003+00:00", "thread": "e25d5cbb", "turn": "d8c40bfc", "agent": "retrieval_agent", "status": "ok", "ms": 31.1, "detail": "attempt 2: 8 relevant chunks, best distance=0.701, filters companies=['Nimbus Retail Ltd'] year=None"}
+{"ts": "2026-10-19T07:50:51.021+00:00", "tool": "lookup_financials", "args": {"company": "Nimbus Retail Ltd", "fiscal_year": 2025}, "ok": false}
+{"ts": "2026-10-19T07:50:51.031+00:00", "tool": "lookup_financials", "args": {"company": "Nimbus Retail Ltd", "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T07:50:51.037+00:00", "thread": "e25d5cbb", "turn": "d8c40bfc", "agent": "kpi_agent", "status": "ok", "ms": 24.1, "detail": "1 companies, metrics=['revenue'], ratios=[], extraction=['none'], discrepancies=0"}
+{"ts": "2026-10-19T07:50:51.045+00:00", "thread": "e25d5cbb", "turn": "d8c40bfc", "agent": "compose", "status": "ok", "ms": 0.0, "detail": "composed kpi answer (211 chars)"}
+{"ts": "2026-10-19T07:50:51.054+00:00", "thread": "e25d5cbb", "turn": "d8c40bfc", "agent": "validation_agent", "status": "ok", "ms": 0.8, "detail": "confidence=0.75 via heuristic; review=True"}
+{"ts": "2026-10-19T07:50:51.061+00:00", "thread": "e25d5cbb", "turn": "d8c40bfc", "agent": "human_review", "status": "interrupted"}
+{"ts": "2026-10-19T07:51:10.577+00:00", "thread": "e25d5cbb", "turn": "d8c40bfc", "agent": "human_review", "status": "ok", "ms": 0.1, "detail": "human decision=approve"}
+{"ts": "2026-10-19T07:51:10.589+00:00", "thread": "e25d5cbb", "turn": "d8c40bfc", "agent": "finalize", "status": "ok", "ms": 0.0, "detail": "answer delivered and saved to memory"}
+{"ts": "2026-10-19T07:52:18.439+00:00", "thread": "e25d5cbb", "turn": "5fc6c599", "event": "question", "question": "Liquidity and Capital Resources FOR Nimbus Retail Ltd"}
+{"ts": "2026-10-19T07:52:18.454+00:00", "thread": "e25d5cbb", "turn": "5fc6c599", "agent": "context_agent", "status": "ok", "ms": 1.9, "detail": "companies=['Nimbus Retail Ltd'] year=2024 memory_used=False q='Liquidity and Capital Resources FOR Nimbus Retail Ltd'"}
+{"ts": "2026-10-19T07:52:18.460+00:00", "thread": "e25d5cbb", "turn": "5fc6c599", "agent": "router_agent", "status": "ok", "ms": 1.3, "detail": "route=kpi via rules: numeric metrics requested: ['current_ratio']"}
+{"ts": "2026-10-19T07:52:18.479+00:00", "tool": "search_documents", "args": {"query": "Liquidity and Capital Resources FOR Nimbus Retail Ltd", "companies": ["Nimbus Retail Ltd"], "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T07:52:18.489+00:00", "tool": "search_documents", "args": {"query": "current ratio", "companies": ["Nimbus Retail Ltd"], "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T07:52:18.494+00:00", "thread": "e25d5cbb", "turn": "5fc6c599", "agent": "retrieval_agent", "status": "ok", "ms": 25.7, "detail": "attempt 1: 3 relevant chunks, best distance=0.6498, filters companies=['Nimbus Retail Ltd'] year=2024"}
+{"ts": "2026-10-19T07:52:18.507+00:00", "tool": "lookup_financials", "args": {"company": "Nimbus Retail Ltd", "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T07:52:18.519+00:00", "tool": "lookup_financials", "args": {"company": "Nimbus Retail Ltd", "fiscal_year": 2023}, "ok": true}
+{"ts": "2026-10-19T07:52:18.527+00:00", "tool": "compute_ratio", "args": {"name": "current_ratio"}, "ok": true}
+{"ts": "2026-10-19T07:52:18.533+00:00", "thread": "e25d5cbb", "turn": "5fc6c599", "agent": "kpi_agent", "status": "ok", "ms": 31.7, "detail": "1 companies, metrics=[], ratios=['current_ratio'], extraction=['none'], discrepancies=0"}
+{"ts": "2026-10-19T07:52:18.544+00:00", "thread": "e25d5cbb", "turn": "5fc6c599", "agent": "compose", "status": "ok", "ms": 0.1, "detail": "composed kpi answer (283 chars)"}
+{"ts": "2026-10-19T07:52:18.551+00:00", "thread": "e25d5cbb", "turn": "5fc6c599", "agent": "validation_agent", "status": "ok", "ms": 0.4, "detail": "confidence=1.00 via heuristic; review=False"}
+{"ts": "2026-10-19T07:52:18.559+00:00", "thread": "e25d5cbb", "turn": "5fc6c599", "agent": "finalize", "status": "ok", "ms": 0.0, "detail": "answer delivered and saved to memory"}
+{"ts": "2026-10-19T08:00:05.313+00:00", "thread": "ae535e93", "turn": "807b00ad", "event": "question", "question": "And what about the previous year"}
+{"ts": "2026-10-19T08:00:05.334+00:00", "thread": "ae535e93", "turn": "807b00ad", "agent": "context_agent", "status": "ok", "ms": 1.9, "detail": "companies=[] year=None memory_used=False q='And what about the previous year'"}
+{"ts": "2026-10-19T08:00:05.346+00:00", "thread": "ae535e93", "turn": "807b00ad", "agent": "router_agent", "status": "ok", "ms": 1.2, "detail": "route=out_of_scope via rules: no financial intent detected"}
+{"ts": "2026-10-19T08:00:05.357+00:00", "thread": "ae535e93", "turn": "807b00ad", "agent": "out_of_scope", "status": "ok", "ms": 0.0, "detail": "polite refusal"}
+{"ts": "2026-10-19T08:00:05.370+00:00", "thread": "ae535e93", "turn": "807b00ad", "agent": "finalize", "status": "ok", "ms": 0.0, "detail": "answer delivered and saved to memory"}
+{"ts": "2026-10-19T08:09:43.655+00:00", "thread": "073a60c5", "turn": "5d7bda64", "event": "question", "question": "Compare net margin and debt-to-equity across all companies in FY2024"}
+{"ts": "2026-10-19T08:09:43.673+00:00", "thread": "073a60c5", "turn": "5d7bda64", "agent": "context_agent", "status": "ok", "ms": 2.1, "detail": "companies=['Nimbus Retail Ltd', 'Orion Software Inc', 'Vertex Energy plc'] year=2024 memory_used=False q='Compare net margin and debt-to-equity across all companies in FY2024'"}
+{"ts": "2026-10-19T08:09:43.682+00:00", "thread": "073a60c5", "turn": "5d7bda64", "agent": "router_agent", "status": "ok", "ms": 0.8, "detail": "route=kpi via rules: numeric metrics requested: ['debt_to_equity', 'net_margin']"}
+{"ts": "2026-10-19T08:09:43.707+00:00", "tool": "search_documents", "args": {"query": "Compare net margin and debt-to-equity across all companies in FY2024", "companies": ["Nimbus Retail Ltd", "Orion Software Inc", "Vertex Energy plc"], "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T08:09:43.723+00:00", "tool": "search_documents", "args": {"query": "debt to equity net margin", "companies": ["Nimbus Retail Ltd", "Orion Software Inc", "Vertex Energy plc"], "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T08:09:43.730+00:00", "thread": "073a60c5", "turn": "5d7bda64", "agent": "retrieval_agent", "status": "ok", "ms": 38.1, "detail": "attempt 1: 0 relevant of 8 -> broadening filters"}
+{"ts": "2026-10-19T08:09:43.753+00:00", "tool": "search_documents", "args": {"query": "Compare net margin and debt-to-equity across all companies in FY2024", "companies": ["Nimbus Retail Ltd", "Orion Software Inc", "Vertex Energy plc"], "fiscal_year": null}, "ok": true}
+{"ts": "2026-10-19T08:09:43.770+00:00", "tool": "search_documents", "args": {"query": "debt to equity net margin", "companies": ["Nimbus Retail Ltd", "Orion Software Inc", "Vertex Energy plc"], "fiscal_year": null}, "ok": true}
+{"ts": "2026-10-19T08:09:43.778+00:00", "thread": "073a60c5", "turn": "5d7bda64", "agent": "retrieval_agent", "status": "ok", "ms": 38.1, "detail": "attempt 2: 0 relevant of 9 -> broadening filters"}
+{"ts": "2026-10-19T08:09:43.797+00:00", "tool": "search_documents", "args": {"query": "Compare net margin and debt-to-equity across all companies in FY2024", "companies": null, "fiscal_year": null}, "ok": true}
+{"ts": "2026-10-19T08:09:43.813+00:00", "tool": "search_documents", "args": {"query": "debt to equity net margin", "companies": null, "fiscal_year": null}, "ok": true}
+{"ts": "2026-10-19T08:09:43.821+00:00", "thread": "073a60c5", "turn": "5d7bda64", "agent": "retrieval_agent", "status": "ok", "ms": 33.4, "detail": "attempt 3: 0 relevant chunks, best distance=None, filters companies=None year=None"}
+{"ts": "2026-10-19T08:09:43.833+00:00", "tool": "lookup_financials", "args": {"company": "Nimbus Retail Ltd", "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T08:09:43.844+00:00", "tool": "lookup_financials", "args": {"company": "Nimbus Retail Ltd", "fiscal_year": 2023}, "ok": true}
+{"ts": "2026-10-19T08:09:43.850+00:00", "tool": "compute_ratio", "args": {"name": "debt_to_equity"}, "ok": true}
+{"ts": "2026-10-19T08:09:43.856+00:00", "tool": "compute_ratio", "args": {"name": "net_margin"}, "ok": true}
+{"ts": "2026-10-19T08:09:43.865+00:00", "tool": "lookup_financials", "args": {"company": "Orion Software Inc", "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T08:09:43.875+00:00", "tool": "lookup_financials", "args": {"company": "Orion Software Inc", "fiscal_year": 2023}, "ok": true}
+{"ts": "2026-10-19T08:09:43.883+00:00", "tool": "compute_ratio", "args": {"name": "debt_to_equity"}, "ok": true}
+{"ts": "2026-10-19T08:09:43.889+00:00", "tool": "compute_ratio", "args": {"name": "net_margin"}, "ok": true}
+{"ts": "2026-10-19T08:09:43.902+00:00", "tool": "lookup_financials", "args": {"company": "Vertex Energy plc", "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T08:09:43.914+00:00", "tool": "lookup_financials", "args": {"company": "Vertex Energy plc", "fiscal_year": 2023}, "ok": true}
+{"ts": "2026-10-19T08:09:43.920+00:00", "tool": "compute_ratio", "args": {"name": "debt_to_equity"}, "ok": true}
+{"ts": "2026-10-19T08:09:43.927+00:00", "tool": "compute_ratio", "args": {"name": "net_margin"}, "ok": true}
+{"ts": "2026-10-19T08:09:43.933+00:00", "thread": "073a60c5", "turn": "5d7bda64", "agent": "kpi_agent", "status": "ok", "ms": 105.4, "detail": "3 companies, metrics=[], ratios=['debt_to_equity', 'net_margin'], extraction=['none'], discrepancies=0"}
+{"ts": "2026-10-19T08:09:43.939+00:00", "thread": "073a60c5", "turn": "5d7bda64", "agent": "compose", "status": "ok", "ms": 0.0, "detail": "composed kpi answer (499 chars)"}
+{"ts": "2026-10-19T08:09:43.947+00:00", "thread": "073a60c5", "turn": "5d7bda64", "agent": "validation_agent", "status": "ok", "ms": 0.2, "detail": "confidence=1.00 via heuristic; review=False"}
+{"ts": "2026-10-19T08:09:43.955+00:00", "thread": "073a60c5", "turn": "5d7bda64", "agent": "finalize", "status": "ok", "ms": 0.0, "detail": "answer delivered and saved to memory"}
+{"ts": "2026-10-19T10:02:18.259+00:00", "thread": "6471ea81", "turn": "05e4266c", "event": "question", "question": "Compare net margin and debt-to-equity across all companies in FY2024\n"}
+{"ts": "2026-10-19T10:02:18.285+00:00", "thread": "6471ea81", "turn": "05e4266c", "agent": "context_agent", "status": "ok", "ms": 2.1, "detail": "companies=['Nimbus Retail Ltd', 'Orion Software Inc', 'Vertex Energy plc'] year=2024 memory_used=False q='Compare net margin and debt-to-equity across all companies in FY2024'"}
+{"ts": "2026-10-19T10:02:18.293+00:00", "thread": "6471ea81", "turn": "05e4266c", "agent": "router_agent", "status": "ok", "ms": 1.3, "detail": "route=kpi via rules: numeric metrics requested: ['debt_to_equity', 'net_margin']"}
+{"ts": "2026-10-19T10:02:18.331+00:00", "tool": "search_documents", "args": {"query": "Compare net margin and debt-to-equity across all companies in FY2024", "companies": ["Nimbus Retail Ltd", "Orion Software Inc", "Vertex Energy plc"], "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T10:02:18.346+00:00", "tool": "search_documents", "args": {"query": "debt to equity net margin", "companies": ["Nimbus Retail Ltd", "Orion Software Inc", "Vertex Energy plc"], "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T10:02:18.351+00:00", "thread": "6471ea81", "turn": "05e4266c", "agent": "retrieval_agent", "status": "ok", "ms": 50.2, "detail": "attempt 1: 0 relevant of 8 -> broadening filters"}
+{"ts": "2026-10-19T10:02:18.372+00:00", "tool": "search_documents", "args": {"query": "Compare net margin and debt-to-equity across all companies in FY2024", "companies": ["Nimbus Retail Ltd", "Orion Software Inc", "Vertex Energy plc"], "fiscal_year": null}, "ok": true}
+{"ts": "2026-10-19T10:02:18.389+00:00", "tool": "search_documents", "args": {"query": "debt to equity net margin", "companies": ["Nimbus Retail Ltd", "Orion Software Inc", "Vertex Energy plc"], "fiscal_year": null}, "ok": true}
+{"ts": "2026-10-19T10:02:18.394+00:00", "thread": "6471ea81", "turn": "05e4266c", "agent": "retrieval_agent", "status": "ok", "ms": 37.4, "detail": "attempt 2: 0 relevant of 9 -> broadening filters"}
+{"ts": "2026-10-19T10:02:18.415+00:00", "tool": "search_documents", "args": {"query": "Compare net margin and debt-to-equity across all companies in FY2024", "companies": null, "fiscal_year": null}, "ok": true}
+{"ts": "2026-10-19T10:02:18.430+00:00", "tool": "search_documents", "args": {"query": "debt to equity net margin", "companies": null, "fiscal_year": null}, "ok": true}
+{"ts": "2026-10-19T10:02:18.439+00:00", "thread": "6471ea81", "turn": "05e4266c", "agent": "retrieval_agent", "status": "ok", "ms": 37.6, "detail": "attempt 3: 0 relevant chunks, best distance=None, filters companies=None year=None"}
+{"ts": "2026-10-19T10:02:18.452+00:00", "tool": "lookup_financials", "args": {"company": "Nimbus Retail Ltd", "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T10:02:18.462+00:00", "tool": "lookup_financials", "args": {"company": "Nimbus Retail Ltd", "fiscal_year": 2023}, "ok": true}
+{"ts": "2026-10-19T10:02:18.466+00:00", "tool": "compute_ratio", "args": {"name": "debt_to_equity"}, "ok": true}
+{"ts": "2026-10-19T10:02:18.470+00:00", "tool": "compute_ratio", "args": {"name": "net_margin"}, "ok": true}
+{"ts": "2026-10-19T10:02:18.480+00:00", "tool": "lookup_financials", "args": {"company": "Orion Software Inc", "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T10:02:18.491+00:00", "tool": "lookup_financials", "args": {"company": "Orion Software Inc", "fiscal_year": 2023}, "ok": true}
+{"ts": "2026-10-19T10:02:18.496+00:00", "tool": "compute_ratio", "args": {"name": "debt_to_equity"}, "ok": true}
+{"ts": "2026-10-19T10:02:18.499+00:00", "tool": "compute_ratio", "args": {"name": "net_margin"}, "ok": true}
+{"ts": "2026-10-19T10:02:18.508+00:00", "tool": "lookup_financials", "args": {"company": "Vertex Energy plc", "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-19T10:02:18.518+00:00", "tool": "lookup_financials", "args": {"company": "Vertex Energy plc", "fiscal_year": 2023}, "ok": true}
+{"ts": "2026-10-19T10:02:18.521+00:00", "tool": "compute_ratio", "args": {"name": "debt_to_equity"}, "ok": true}
+{"ts": "2026-10-19T10:02:18.524+00:00", "tool": "compute_ratio", "args": {"name": "net_margin"}, "ok": true}
+{"ts": "2026-10-19T10:02:18.527+00:00", "thread": "6471ea81", "turn": "05e4266c", "agent": "kpi_agent", "status": "ok", "ms": 81.0, "detail": "3 companies, metrics=[], ratios=['debt_to_equity', 'net_margin'], extraction=['none'], discrepancies=0"}
+{"ts": "2026-10-19T10:02:18.533+00:00", "thread": "6471ea81", "turn": "05e4266c", "agent": "compose", "status": "ok", "ms": 0.0, "detail": "composed kpi answer (499 chars)"}
+{"ts": "2026-10-19T10:02:18.538+00:00", "thread": "6471ea81", "turn": "05e4266c", "agent": "validation_agent", "status": "ok", "ms": 0.2, "detail": "confidence=1.00 via heuristic; review=False"}
+{"ts": "2026-10-19T10:02:18.544+00:00", "thread": "6471ea81", "turn": "05e4266c", "agent": "finalize", "status": "ok", "ms": 0.0, "detail": "answer delivered and saved to memory"}
+{"ts": "2026-10-21T09:54:21.420+00:00", "thread": "2c7f2cf1", "turn": "e6102f96", "event": "question", "question": "What are the principal risks for Orion Software"}
+{"ts": "2026-10-21T09:54:21.466+00:00", "thread": "2c7f2cf1", "turn": "e6102f96", "agent": "context_agent", "status": "ok", "ms": 9.2, "detail": "companies=['Orion Software Inc'] year=2024 memory_used=False q='What are the principal risks for Orion Software'"}
+{"ts": "2026-10-21T09:54:21.483+00:00", "thread": "2c7f2cf1", "turn": "e6102f96", "agent": "router_agent", "status": "ok", "ms": 10.4, "detail": "route=qa via rules: factual / explanatory question"}
+{"ts": "2026-10-21T09:54:21.540+00:00", "tool": "search_documents", "args": {"query": "What are the principal risks for Orion Software", "companies": ["Orion Software Inc"], "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-21T09:54:21.544+00:00", "thread": "2c7f2cf1", "turn": "e6102f96", "agent": "retrieval_agent", "status": "ok", "ms": 56.5, "detail": "attempt 1: 1 relevant chunks, best distance=0.7795, filters companies=['Orion Software Inc'] year=2024"}
+{"ts": "2026-10-21T09:54:21.547+00:00", "thread": "2c7f2cf1", "turn": "e6102f96", "agent": "answer_agent", "status": "ok", "ms": 1.1, "detail": "answer via extractive-fallback"}
+{"ts": "2026-10-21T09:54:21.550+00:00", "thread": "2c7f2cf1", "turn": "e6102f96", "agent": "compose", "status": "ok", "ms": 0.0, "detail": "composed qa answer (308 chars)"}
+{"ts": "2026-10-21T09:54:21.554+00:00", "thread": "2c7f2cf1", "turn": "e6102f96", "agent": "validation_agent", "status": "ok", "ms": 0.9, "detail": "confidence=0.75 via heuristic; review=False"}
+{"ts": "2026-10-21T09:54:21.557+00:00", "thread": "2c7f2cf1", "turn": "e6102f96", "agent": "finalize", "status": "ok", "ms": 0.1, "detail": "answer delivered and saved to memory"}
+{"ts": "2026-10-21T09:58:29.980+00:00", "thread": "ce73a2ff", "turn": "2d87bdc2", "event": "question", "question": "Give me a full analysis of Vertex Energy FY2024"}
+{"ts": "2026-10-21T09:58:29.988+00:00", "thread": "ce73a2ff", "turn": "2d87bdc2", "agent": "context_agent", "status": "ok", "ms": 0.4, "detail": "companies=['Vertex Energy plc'] year=2024 memory_used=False q='Give me a full analysis of Vertex Energy FY2024'"}
+{"ts": "2026-10-21T09:58:29.990+00:00", "thread": "ce73a2ff", "turn": "2d87bdc2", "agent": "router_agent", "status": "ok", "ms": 0.3, "detail": "route=full_analysis via rules: asks for narrative + metrics"}
+{"ts": "2026-10-21T09:58:29.998+00:00", "tool": "search_documents", "args": {"query": "Give me a full analysis of Vertex Energy FY2024", "companies": ["Vertex Energy plc"], "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-21T09:58:30.005+00:00", "tool": "search_documents", "args": {"query": "revenue net income financial performance", "companies": ["Vertex Energy plc"], "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-21T09:58:30.012+00:00", "tool": "search_documents", "args": {"query": "principal risks and uncertainties", "companies": ["Vertex Energy plc"], "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-21T09:58:30.017+00:00", "tool": "search_documents", "args": {"query": "outlook guidance strategy", "companies": ["Vertex Energy plc"], "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-21T09:58:30.021+00:00", "tool": "search_documents", "args": {"query": "cash flow liquidity balance sheet", "companies": ["Vertex Energy plc"], "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-21T09:58:30.024+00:00", "thread": "ce73a2ff", "turn": "2d87bdc2", "agent": "retrieval_agent", "status": "ok", "ms": 30.8, "detail": "attempt 1: 1 relevant chunks, best distance=0.8001, filters companies=['Vertex Energy plc'] year=2024"}
+{"ts": "2026-10-21T09:58:30.042+00:00", "thread": "ce73a2ff", "turn": "2d87bdc2", "agent": "summary_agent", "status": "ok", "ms": 0.5, "detail": "summary via extractive-fallback, 1 chunks"}
+{"ts": "2026-10-21T09:58:30.053+00:00", "tool": "lookup_financials", "args": {"company": "Vertex Energy plc", "fiscal_year": 2024}, "ok": true}
+{"ts": "2026-10-21T09:58:30.056+00:00", "tool": "lookup_financials", "args": {"company": "Vertex Energy plc", "fiscal_year": 2023}, "ok": true}
+{"ts": "2026-10-21T09:58:30.059+00:00", "tool": "compute_ratio", "args": {"name": "gross_margin"}, "ok": true}
+{"ts": "2026-10-21T09:58:30.060+00:00", "tool": "compute_ratio", "args": {"name": "net_margin"}, "ok": true}
+{"ts": "2026-10-21T09:58:30.061+00:00", "tool": "compute_ratio", "args": {"name": "current_ratio"}, "ok": true}
+{"ts": "2026-10-21T09:58:30.063+00:00", "tool": "compute_ratio", "args": {"name": "debt_to_equity"}, "ok": true}
+{"ts": "2026-10-21T09:58:30.065+00:00", "tool": "compute_ratio", "args": {"name": "roe"}, "ok": true}
+{"ts": "2026-10-21T09:58:30.066+00:00", "tool": "compute_ratio", "args": {"name": "revenue_growth"}, "ok": true}
+{"ts": "2026-10-21T09:58:30.068+00:00", "thread": "ce73a2ff", "turn": "2d87bdc2", "agent": "kpi_agent", "status": "ok", "ms": 41.3, "detail": "1 companies, metrics=['revenue', 'gross_profit', 'ebitda', 'net_income', 'total_assets', 'total_liabilities', 'shareholders_equity', 'free_cash_flow', 'eps'], ratios=['gross_margin', 'net_margin', 'current_ratio', 'debt_to_equity', 'roe', 'revenue_growth'], extraction=['regex'], discrepancies=0"}
+{"ts": "2026-10-21T09:58:30.071+00:00", "thread": "ce73a2ff", "turn": "2d87bdc2", "agent": "compose", "status": "ok", "ms": 0.0, "detail": "composed full_analysis answer (1392 chars)"}
+{"ts": "2026-10-21T09:58:30.074+00:00", "thread": "ce73a2ff", "turn": "2d87bdc2", "agent": "validation_agent", "status": "ok", "ms": 0.2, "detail": "confidence=1.00 via heuristic; review=True"}
+{"ts": "2026-10-21T09:58:30.076+00:00", "thread": "ce73a2ff", "turn": "2d87bdc2", "agent": "human_review", "status": "interrupted"}
+{"ts": "2026-10-21T09:58:45.787+00:00", "thread": "ce73a2ff", "turn": "2d87bdc2", "agent": "human_review", "status": "ok", "ms": 0.0, "detail": "human decision=approve"}
+{"ts": "2026-10-21T09:58:45.791+00:00", "thread": "ce73a2ff", "turn": "2d87bdc2", "agent": "finalize", "status": "ok", "ms": 0.0, "detail": "answer delivered and saved to memory"}
