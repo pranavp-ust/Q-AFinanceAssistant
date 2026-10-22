@@ -92,10 +92,12 @@ def _ledger() -> pd.DataFrame:
 
 
 def known_companies() -> list[str]:
+    """Ledger companies plus any company with an indexed report (so uploaded reports are recognised)."""
     try:
-        return sorted(_ledger()["company"].unique().tolist())
+        ledger = _ledger()["company"].unique().tolist()
     except FileNotFoundError:
-        return list(vectorstore.SLUG_TO_COMPANY.values())
+        ledger = list(vectorstore.SLUG_TO_COMPANY.values())
+    return sorted(set(ledger) | set(vectorstore.indexed_companies()))
 
 
 def known_years() -> list[int]:

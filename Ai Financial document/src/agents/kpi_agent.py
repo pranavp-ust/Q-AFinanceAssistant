@@ -15,6 +15,7 @@ from src.monitoring import agent_node, metrics
 from src.prompts import KPI_EXTRACT_SYSTEM, KPI_NARRATIVE_SYSTEM
 from src.tools import (CORE_KPIS, CORE_RATIOS, PERCENT_RATIOS, compute_ratio, detect_metrics,
                        known_years, lookup_financials)
+from src.vectorstore import search
 
 from .common import body, format_context, money
 
@@ -55,6 +56,23 @@ def regex_extract(chunks: list[dict], wanted: list[str], year: int) -> dict:
         if m:
             out[key] = float(m.group(1).replace(",", ""))
     return out
+
+
+def _targeted_chunks(company: str, year: int, wanted: list[str]) -> list[dict]:
+    """Metric-focused search: the broad retrieval can miss the sentence that states a figure."""
+    if not wanted or not year:
+        return []
+    found, seen = [], set()
+    for key in wanted:  # one query per metric: a combined query dilutes the match
+        try:
+            hits = search(f"{key.replace('_', ' ')} for FY{year} was $ million", [company], year, k=3)
+        except Exception:  # store missing / embedding failure -> rely on the broad retrieval only
+            return found
+        for h in hits:
+            if h["text"] not in seen:
+                seen.add(h["text"])
+                found.append(h)
+    return found
 
 
 def _doc_values(question, company, year, wanted, chunks) -> tuple[dict, str]:
@@ -122,7 +140,9 @@ def kpi_agent(state):
     for company in companies:
         ledger = lookup_financials(company, year)               # tool: structured DB
         prev = lookup_financials(company, year - 1) if year else {}
-        doc_vals, src = _doc_values(q, company, year, raw, chunks)  # LLM / regex extraction
+        seen = {c["text"] for c in chunks}
+        extra = [c for c in _targeted_chunks(company, year, raw) if c["text"] not in seen]
+        doc_vals, src = _doc_values(q, company, year, raw, chunks + extra)  # LLM / regex extraction
         sources.add(src)
         values = {k: ledger.get(k, doc_vals.get(k)) for k in raw}
         ratio_vals = {}

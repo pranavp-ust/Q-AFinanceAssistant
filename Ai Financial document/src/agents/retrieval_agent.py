@@ -65,7 +65,9 @@ def retrieval_agent(state):
         h["keyword_coverage"] = round(len(qk & keywords(body(h))) / len(qk), 2) if qk else 0.0
     # no company in the question (e.g. "What is EBITDA?") -> prefer general docs such as the glossary
     prefer_general = not state.get("companies")
-    relevant = sorted([h for h in hits if h["distance"] <= settings.max_relevant_distance
+    # overview question ("tell me about X"): no content words left, so every passage of that company is on topic
+    overview = not qk and bool(companies)
+    relevant = sorted([h for h in hits if overview or h["distance"] <= settings.max_relevant_distance
                        or h["keyword_coverage"] >= MIN_KEYWORD_COVERAGE],
                       key=lambda h: (-(prefer_general and not h.get("company")), -h.get("rrf", 0)))
     if not relevant and attempt < MAX_ATTEMPTS:
@@ -82,6 +84,10 @@ def retrieval_agent(state):
 def _extractive_answer(question: str, chunks: list[dict], companies: list[str]) -> str:
     """Fallback when the LLM is unavailable: best-overlapping sentences, with citations."""
     qk = keywords(question.split(" (company:")[0]) - {w for c in companies for w in keywords(c)}
+    if not qk and chunks:  # entity-only question such as "what is X": open with the best passage
+        opening = sentences(body(chunks[0]))[:2]
+        if opening:
+            return " ".join(f"{s} [1]" for s in opening)
     scored = []
     for i, c in enumerate(chunks[:6], start=1):
         for s in sentences(body(c)):

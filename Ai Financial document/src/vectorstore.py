@@ -130,6 +130,7 @@ def ingest_pdf(path: Path, company: str | None = None, fiscal_year: int | None =
     if ids:
         get_collection().upsert(ids=ids, documents=docs, metadatas=metas)  # idempotent re-ingest
         _bm25_index.cache_clear()
+        indexed_companies.cache_clear()
     logger.info("ingested %s: %d chunks", path.name, len(ids))
     return len(ids)
 
@@ -145,6 +146,20 @@ def ingest_directory(directory: Path | None = None) -> dict:
 def _tokens(text: str) -> list[str]:
     words = [w for w in re.findall(r"[a-z0-9]+", text.lower()) if w not in HashingEmbedding.STOP and len(w) > 1]
     return [w[:-1] if len(w) > 4 and w.endswith("s") else w for w in words]
+
+
+@lru_cache(maxsize=1)
+def indexed_companies() -> tuple[str, ...]:
+    """Companies with at least one indexed chunk, including uploaded reports not in the ledger."""
+    try:
+        col = get_collection()
+        if col.count() == 0:
+            return ()
+        metas = col.get(include=["metadatas"])["metadatas"]
+    except Exception as exc:  # store missing / broken -> ledger companies only
+        logger.warning("could not list indexed companies: %s", exc)
+        return ()
+    return tuple(sorted({m["company"] for m in metas if m.get("company")}))
 
 
 @lru_cache(maxsize=1)

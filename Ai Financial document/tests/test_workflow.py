@@ -51,9 +51,12 @@ def test_reject_withholds_answer(graph):
 
 
 def test_comparison_across_companies(graph):
+    from src.tools import known_companies
     res = ask(graph, "t-cmp", "Compare net margin across all companies in FY2024")
     assert res["route"] == "kpi"
-    assert len(res["kpi_results"]) == 3
+    # includes any uploaded reports, not only the ledger companies
+    assert len(res["kpi_results"]) == len(known_companies())
+    assert {"Nimbus Retail Ltd", "Orion Software Inc", "Vertex Energy plc"} <= set(res["kpi_results"])
 
 
 def test_retrieval_failure_degrades_gracefully(graph, monkeypatch):
@@ -68,3 +71,11 @@ def test_retrieval_failure_degrades_gracefully(graph, monkeypatch):
     assert res["status"] == "awaiting_review"
     assert any("degraded" in r for r in res["review"]["reasons"])
     assert f"{lookup_financials('Orion Software Inc', 2024)['net_income']:,.1f}" in res["answer"]
+
+
+def test_advice_question_gets_fixed_reply_without_retrieval(graph):
+    res = ask(graph, "t-adv", "Should I buy Lakeview Foods shares?")
+    assert res["route"] == "advice"
+    assert "can't say whether to buy" in res["answer"]
+    assert "retrieval_agent" not in agents(res)
+    assert any("investment advice" in r for r in res["review"]["reasons"])

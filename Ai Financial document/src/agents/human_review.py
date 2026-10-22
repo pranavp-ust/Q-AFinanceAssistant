@@ -42,6 +42,15 @@ def out_of_scope(state):
     return {"draft_answer": msg, "needs_review": False, "_trace_detail": "polite refusal"}
 
 
+@agent_node("advice_agent")
+def advice_agent(state):
+    """Fixed reply for buy/sell questions. No retrieval, so no unrelated passages are quoted."""
+    msg = ("I can't say whether to buy, sell or hold any shares. I can share the figures reported in the "
+           "indexed financial documents, such as revenue, net income, EPS, debt or risks, if you want to "
+           "compare them yourself.")
+    return {"qa_answer": msg, "_trace_detail": "fixed investment-advice reply"}
+
+
 @agent_node("finalize")
 def finalize(state):
     final = state.get("final_answer") or state.get("draft_answer", "")

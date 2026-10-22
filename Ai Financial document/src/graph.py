@@ -21,14 +21,19 @@ from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import END, START, StateGraph
 from langgraph.types import Command
 
-from src.agents import (answer_agent, compose_node, context_agent, finalize, human_review, kpi_agent,
-                        out_of_scope, retrieval_agent, router_agent, summary_agent, validation_agent)
+from src.agents import (advice_agent, answer_agent, compose_node, context_agent, finalize, human_review,
+                        kpi_agent, out_of_scope, retrieval_agent, router_agent, summary_agent, validation_agent)
 from src.monitoring import log_event, metrics
 from src.state import QAState
 
 
 def after_router(state) -> str:
-    return "out_of_scope" if state.get("route") == "out_of_scope" else "retrieval_agent"
+    route = state.get("route")
+    if route == "out_of_scope":
+        return "out_of_scope"
+    if route == "advice":
+        return "advice_agent"
+    return "retrieval_agent"
 
 
 def after_retrieval(state) -> list[str] | str:
@@ -60,7 +65,9 @@ def build_graph(checkpointer=None):
 
     g.add_edge(START, "context_agent")                 # sequential
     g.add_edge("context_agent", "router_agent")
-    g.add_conditional_edges("router_agent", after_router, ["out_of_scope", "retrieval_agent"])
+    g.add_node("advice_agent", advice_agent)
+    g.add_conditional_edges("router_agent", after_router, ["out_of_scope", "advice_agent", "retrieval_agent"])
+    g.add_edge("advice_agent", "compose")              # goes to review: advice rule in validation
     g.add_conditional_edges("retrieval_agent", after_retrieval,
                             ["retrieval_agent", "answer_agent", "kpi_agent", "summary_agent"])
     for n in ("answer_agent", "kpi_agent", "summary_agent"):

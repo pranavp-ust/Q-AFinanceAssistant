@@ -18,7 +18,7 @@ def compose_node(state):
     parts = []
     if state.get("assumptions"):
         parts.append("_" + " ".join(state["assumptions"]) + "_")
-    if route == "qa":
+    if route in ("qa", "advice"):
         parts.append(state.get("qa_answer", ""))
     if route == "summary":
         parts.append(state.get("summary", ""))
@@ -29,8 +29,13 @@ def compose_node(state):
             parts.append(("### Key metrics\n" if route == "full_analysis" else "") + state["kpi_narrative"])
         if state.get("kpi_table"):
             parts.append(state["kpi_table"])
-            parts.append("_Figures verified against the structured financial ledger; ratios computed by the "
-                         "calculator tool._")
+            kpi_results = state.get("kpi_results") or {}
+            if all(r["verified_against_ledger"] for r in kpi_results.values()):
+                parts.append("_Figures verified against the structured financial ledger; ratios computed by the "
+                             "calculator tool._")
+            else:
+                parts.append("_Some figures are not in the structured ledger, so they come from the document "
+                             "only and were not verified. Ratios computed by the calculator tool._")
     if state.get("errors"):
         parts.append("_Note: some components were unavailable, so this answer may be incomplete._")
     draft = "\n\n".join(p for p in parts if p)

@@ -10,6 +10,8 @@ from src.monitoring import agent_node, metrics
 from src.prompts import ROUTER_SYSTEM
 from src.tools import detect_metrics
 
+from .common import ADVICE_PATTERN
+
 ROUTES = {"qa", "kpi", "summary", "full_analysis", "out_of_scope"}
 FINANCE_WORDS = re.compile(
     r"\b(revenue|profit|income|margin|ratio|debt|equity|asset|liabilit|cash|dividend|eps|earning|"
@@ -36,6 +38,9 @@ def rule_route(question: str, has_company: bool) -> tuple[str, str]:
 def router_agent(state):
     q = state.get("standalone_question") or state["question"]
     has_company = bool(state.get("companies"))
+    if ADVICE_PATTERN.search(state["question"]):  # deterministic: never retrieve passages for buy/sell questions
+        return {"route": "advice", "route_reason": "investment advice request",
+                "_trace_detail": "route=advice via rules: investment advice request"}
     source = "llm"
     try:
         out = llm.chat_json(ROUTER_SYSTEM, f"Question: {q}\nCompanies detected: {state.get('companies')}",
